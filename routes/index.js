@@ -19,28 +19,36 @@ router.get('/home/:id', (req, res, next) => {
 
 
 router.post('/home', (req, res, next) => {
+  let mgcontent = req.body.content;
 
-  let content = req.body.content;
+  if (mgcontent.length > 1 && mgcontent) {
+    let newMessage = new messagesData({
+      content: {
+        value: mgcontent
+      },
+    })
 
-  console.log(content)
-  let newMessage = new messagesData({
-    content:{
-      value : content
-    }, 
-  })
+    newMessage.save(function (err, resp) {
+      if (err) {
+        console.log('err' + err);
+        res.status(500).send({
+          success: false,
+          message: 'something went wrong in database .. 👎💔'
+        });
+      } else {
+        res.status(200).send({
+          success: true,
+          message: 'Message had been saved 🔥🔥'
+        });
+      }
+    });
+  } else {
+    res.status(500).send({
+      success: false,
+      message: 'something went wrong 👎💔'
+    });
+  }
 
-  newMessage.save(function(err, resp) {
-    if (err) {
-      console.log(err);
-      res.send({
-        message: 'something went wrong'
-      });
-    } else {
-      res.send({
-        message: 'the appointment has been saved'
-      });
-    }
-  });
 })
 
 module.exports = router;
