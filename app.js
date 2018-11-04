@@ -8,6 +8,9 @@ var bodyParser = require('body-parser')
 
 var indexRouter = require('./routes/index');
 var adminRout = require('./routes/admin');
+var login = require('./routes/login');
+var signup = require('./routes/signup');
+
 
 //database setting ...
 
@@ -28,6 +31,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(indexRouter);
 app.use('/admin', adminRout);
+app.use('/login', login);
+app.use('/signup',signup)
 app.listen(3000,()=>{
     console.log("server is running")
 })
