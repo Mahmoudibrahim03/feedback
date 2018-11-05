@@ -1,9 +1,8 @@
 var express = require('express');
-router.post('/', (req, res, next) => {
 var adminData = require('../models/admin')
 var bcrypt = require('bcrypt')
 var router = express.Router();
-
+router.post('/', (req, res, next) => {
     const username = req.body.username,
         password = req.body.password;
     adminData.find({
@@ -22,19 +21,22 @@ var router = express.Router();
                     message: "userName not found .. "
                 })
             } else {
-                console.log(result)
                 const hashedPass = result[0].password;
                 bcrypt.compare(password, hashedPass, (err) => {
                     if (err) {
-                        console.log('err in comparison hashed password .. ' + err);
+                        res.status(500).json({
+                            success: false,
+                            message:'login data is not correct'
+                        })
                     }
+                    req.session.ID = result[0].id;
                     res.status(200).json({
                         success: true,
+                        message:'login is correct'
                     })
                 });
             }
         }
     })
-
 })
 module.exports = router;
