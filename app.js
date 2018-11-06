@@ -12,7 +12,8 @@ var indexRouter = require('./routes/index');
 var adminRout = require('./routes/admin');
 var login = require('./routes/login');
 var signup = require('./routes/signup');
-var logout = require('./routes/signout')
+var logout = require('./routes/signout');
+var reply = require('./routes/reply');
 
 //database setting ...
 
@@ -43,6 +44,7 @@ app.use('/admin', adminRout);
 app.use('/login', login);
 app.use('/signup', signup)
 app.use('/logout', logout)
+app.use(reply)
 app.listen(3000, () => {
     console.log("server is running")
 })

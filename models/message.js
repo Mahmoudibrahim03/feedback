@@ -15,6 +15,7 @@ var messageSchema = new schema({
     },
     reply: {
         value: String,
+        default:" no reply yet",
         date: {
             type: Date,
             default: Date.now
@@ -33,5 +34,7 @@ var messageSchema = new schema({
         default: false,
     }
 });
+
+
 var message = mongoose.model('message', messageSchema);
 module.exports = message
