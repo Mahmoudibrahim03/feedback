@@ -5,20 +5,12 @@ var messagesData = require('../models/message')
 /* GET admin data */
 router.post('/reply/:id', (req, res, next) => {
     if (req.session.ID) {
-        console.log(req.body.reply, req.params.id)
-
-        // messagesData.findOneAndUpdate({id:req.params.id},{
-        //     reply:{
-        //         content:req.body.reply,
-        //         date: Date.now
-        //     }
-        // })
-
         messagesData.findOneAndUpdate({
             _id: req.params.id
         }, {
             reply: {
                 value: req.body.reply,
+                date: new Date().toISOString()
             }
         }, (err, data) => {
             if (err) {

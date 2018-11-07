@@ -45,7 +45,7 @@ router.get('/home/:id', (req, res, next) => {
 router.post('/home', (req, res, next) => {
   let mgcontent = req.body.content;
 
-  if (mgcontent.length > 1 && mgcontent.lenght <= 1500) {
+  if (mgcontent.length > 1 && mgcontent.length <= 1500) {
     let newMessage = new messagesData({
       content: {
         value: mgcontent

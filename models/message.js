@@ -6,7 +6,7 @@ var messageSchema = new schema({
         value: {
             type: String,
             required: true,
-            trim: true
+            trim: true,
         },
         date: {
             type: Date,
@@ -14,8 +14,11 @@ var messageSchema = new schema({
         }
     },
     reply: {
-        value: String,
-        default:" no reply yet",
+        value:{
+            type:String,
+            trim: true,
+            default:'not yet',
+        },
         date: {
             type: Date,
             default: Date.now
