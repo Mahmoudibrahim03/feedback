@@ -1,10 +1,9 @@
 const express = require('express');
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 var bodyParser = require('body-parser')
 var session = require('express-session')
-
+var conf = require('./config/conf')
 
 //routing setting ...
 
@@ -14,7 +13,7 @@ var login = require('./routes/login');
 var signup = require('./routes/signup');
 var logout = require('./routes/signout');
 var reply = require('./routes/reply');
-
+var dashboard = require('./routes/dashboard')
 //database setting ...
 
 var databaseConnection = require('./models/setting');
@@ -34,17 +33,19 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(session({
-    secret: 'keyboard cat',
+    secret:conf.secret,
     resave: false,
     saveUninitialized: true
 }))
 
-app.use(indexRouter);
 app.use('/admin', adminRout);
+app.use('/signup', signup);
+app.use('/logout', logout);
 app.use('/login', login);
-app.use('/signup', signup)
-app.use('/logout', logout)
-app.use(reply)
+app.use(indexRouter);
+app.use(dashboard);
+app.use(reply);
+
 app.listen(3000, () => {
     console.log("server is running")
 })

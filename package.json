@@ -13,7 +13,6 @@
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "mongoose": "^5.3.8",
-    "mongoose-timestamp-plugin": "0.0.1",
     "morgan": "~1.9.0"
   }
 }

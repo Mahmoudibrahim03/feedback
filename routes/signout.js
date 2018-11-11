@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     }else{
         res.status(500).json({
             success:false,
-            message:"User not exist .. "
+            message:"User not logged in .. "
         })
     }
 });

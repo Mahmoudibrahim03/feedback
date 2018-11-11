@@ -12,17 +12,16 @@ router.post('/reply/:id', (req, res, next) => {
                 value: req.body.reply,
                 date: new Date().toISOString()
             }
-        }, (err, data) => {
+        }, (err) => {
             if (err) {
                 console.log(err)
                 res.status(500).json({
                     success: false,
-                    messages: "What the f*ck is that 💩💩"
+                    messages: "What the f*ck is tat 💩💩"
                 })
             } else {
                 res.status(200).json({
                     success: true,
-                    messages: data
                 })
             }
         })
