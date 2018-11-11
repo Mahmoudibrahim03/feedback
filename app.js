@@ -4,7 +4,7 @@ const logger = require('morgan');
 var bodyParser = require('body-parser')
 var session = require('express-session')
 var conf = require('./config/conf')
-
+var port = preocess.env.PORT || 3000
 //routing setting ...
 
 var indexRouter = require('./routes/index');
@@ -46,7 +46,7 @@ app.use(indexRouter);
 app.use(dashboard);
 app.use(reply);
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("server is running")
 })
 module.exports = app;
