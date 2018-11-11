@@ -4,7 +4,7 @@ const logger = require('morgan');
 var bodyParser = require('body-parser')
 var session = require('express-session')
 var conf = require('./config/conf')
-var port = preocess.env.PORT || 3000
+var port = process.env.PORT || 3000
 //routing setting ...
 
 var indexRouter = require('./routes/index');
