@@ -14,6 +14,7 @@ var signup = require('./routes/signup');
 var logout = require('./routes/signout');
 var reply = require('./routes/reply');
 var dashboard = require('./routes/dashboard')
+var like = require('./routes/like')
 //database setting ...
 
 var databaseConnection = require('./models/setting');
@@ -45,6 +46,8 @@ app.use('/login', login);
 app.use(indexRouter);
 app.use(dashboard);
 app.use(reply);
+app.use(like);
+
 
 app.listen(port, () => {
     console.log("server is running")

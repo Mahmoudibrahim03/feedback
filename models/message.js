@@ -30,7 +30,7 @@ var messageSchema = new schema({
     },
     love: {
         type: Number,
-        default: 0
+        default: 0,
     },
     readStatus: {
         type: Boolean,

@@ -5,7 +5,8 @@ var adminSchema = new schema({
     username: {
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        trim:true
     },
     password:{
         type:String,
