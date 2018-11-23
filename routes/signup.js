@@ -12,7 +12,6 @@ router.post('/', (req, res, next) => {
         facebook = req.body.facebookLink,
         twitter = req.body.twitterLink,
         github = req.body.githubLink;
-
     bcrypt.hash(password, 10, (err, hash) => {
         if (err) {
             console.log(err);

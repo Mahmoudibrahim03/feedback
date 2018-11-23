@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var adminData = require('../models/admin')
 var messagesData = require('../models/message')
 /* GET admin data */
 router.post('/reply/:id', (req, res, next) => {

@@ -23,7 +23,9 @@ router.get('/', (req, res, next) => {
     }
 });
 
-// Get all admin data 
+// signUp
+
+// sign in (login)
 
 
 module.exports = router;

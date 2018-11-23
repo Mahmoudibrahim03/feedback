@@ -1,5 +1,5 @@
 module.exports = {
+    salt:10,
     secret:"Mew Mew ..",
-    dbUsername:"xmanali92",
-    dbPassword:"xmanali92",
+    dbLink:'mongodb://xmanali92:xmanali92@ds259463.mlab.com:59463/feedback',
 }

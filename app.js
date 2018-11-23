@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const helmet = require('helmet')
 var bodyParser = require('body-parser')
 var session = require('express-session')
 var conf = require('./config/conf')
@@ -9,12 +10,13 @@ var port = process.env.PORT || 3000
 
 var indexRouter = require('./routes/index');
 var adminRout = require('./routes/admin');
-var login = require('./routes/login');
-var signup = require('./routes/signup');
+var login = require('./routes/login.1');
+var signup = require('./routes/signup.1');
 var logout = require('./routes/signout');
 var reply = require('./routes/reply');
 var dashboard = require('./routes/dashboard')
 var like = require('./routes/like')
+
 //database setting ...
 
 var databaseConnection = require('./models/setting');
@@ -23,6 +25,7 @@ databaseConnection.connect()
 //medileware setting .....
 
 const app = express();
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -38,6 +41,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
+app.use(helmet())
 
 app.use('/admin', adminRout);
 app.use('/signup', signup);
