@@ -20,9 +20,8 @@ router.get('/home', (req, res, next) => {
   })
 });
 
-
 /* get specific post */
-router.get('/home/:id', (req, res, next) => {
+router.get('home/:id', (req, res, next) => {
   targetId = req.params.id;
   messagesData.find({
     _id: targetId

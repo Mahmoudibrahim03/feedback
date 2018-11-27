@@ -5,17 +5,10 @@ const helmet = require('helmet')
 var bodyParser = require('body-parser')
 var session = require('express-session')
 var conf = require('./config/conf')
-var port = process.env.PORT || 3000
+var port = process.env.PORT || conf.port
 //routing setting ...
 
-var indexRouter = require('./routes/index');
-var adminRout = require('./routes/admin');
-var login = require('./routes/login.1');
-var signup = require('./routes/signup.1');
-var logout = require('./routes/signout');
-var reply = require('./routes/reply');
-var dashboard = require('./routes/dashboard')
-var like = require('./routes/like')
+var api = require('./routes/api')
 
 //database setting ...
 
@@ -37,20 +30,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(session({
-    secret:conf.secret,
+    secret: conf.secret,
     resave: false,
     saveUninitialized: true
 }))
 app.use(helmet())
 
-app.use('/admin', adminRout);
-app.use('/signup', signup);
-app.use('/logout', logout);
-app.use('/login', login);
-app.use(indexRouter);
-app.use(dashboard);
-app.use(reply);
-app.use(like);
+app.use('/api', api);
 
 
 app.listen(port, () => {
