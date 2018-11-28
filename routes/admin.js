@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
             }
         })
     }else{
-        res.redirect("/home")
+        res.redirect("/api/home")
     }
 });
 

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var messageData = require('../models/message')
 
-router.post('/like/:id', (req, res, next) => {
+router.post('/', (req, res, next) => {
     if (req.session.ID) {
         var target = req.params.id;
         var likeValue = req.body.like;

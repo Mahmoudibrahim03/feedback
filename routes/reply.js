@@ -1,8 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var messagesData = require('../models/message')
+const express = require('express');
+const router = express.Router();
+const messagesData = require('../models/message')
+
+
+
+
 /* GET admin data */
-router.post('/reply/:id', (req, res, next) => {
+router.post('/:id/reply', (req, res, next) => {
     if (req.session.ID) {
         messagesData.findOneAndUpdate({
             _id: req.params.id
@@ -10,7 +14,7 @@ router.post('/reply/:id', (req, res, next) => {
             reply: {
                 value: req.body.reply,
                 date: new Date().toISOString()
-            }
+            } 
         }, (err) => {
             if (err) {
                 console.log(err)
@@ -26,6 +30,8 @@ router.post('/reply/:id', (req, res, next) => {
         })
     }
 });
+
+
 
 // Get all admin data 
 

@@ -1,10 +1,12 @@
+const Router = require('express').Router();
 
-var messages = require('./messages')
-var adminRout = require('./admin');
-var registration = require('./registration')
+const messages = require('./index')
+const adminRout = require('./admin');
+const registration = require('./registration')
 
-Router.user(messages)
-Router.use('/admin', adminRout);
-Router.use(registration)
+Router.use(messages)
 
+Router.use('/admin', adminRout); ////✅✅
+Router.use(registration) //✅✅
 
+module.exports = Router

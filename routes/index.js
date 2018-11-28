@@ -1,7 +1,13 @@
-var express = require('express');
-var messagesData = require('../models/message')
-var router = express.Router();
+const express = require('express');
+const messagesData = require('../models/message')
+const reply = require('./reply')
+const router = express.Router();
+const dashboard = require('./dashboard')
+const like = require('./like');
 
+router.use(dashboard); // Visable part from the adming
+router.use(reply); // reply part from the admin
+router.use('/:id/like',like); // like from the admin
 /*get all messages*/
 
 router.get('/home', (req, res, next) => {
@@ -21,7 +27,7 @@ router.get('/home', (req, res, next) => {
 });
 
 /* get specific post */
-router.get('home/:id', (req, res, next) => {
+router.get('/home/:id', (req, res, next) => {
   targetId = req.params.id;
   messagesData.find({
     _id: targetId
@@ -74,5 +80,6 @@ router.post('/home', (req, res, next) => {
   }
 
 })
+
 
 module.exports = router;
